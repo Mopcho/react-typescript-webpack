@@ -1,46 +1,10 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { merge } = require('webpack-merge');
 
-module.exports = {
-	entry: {
-		bundle: path.resolve(__dirname, '..', './src/index.tsx'),
-	},
-	output: {
-		path: path.resolve(__dirname, '..', './build'),
-		filename: 'bundle.js',
-	},
-	mode: 'development',
-	resolve: {
-		extensions: ['.tsx', '.ts', '.js'],
-	},
-	module: {
-		rules: [
-			{
-				test: /.(ts|js)x?$/,
-				exclude: /node_modules/,
-				use: [
-					{
-						loader: 'babel-loader',
-					},
-				],
-			},
-			{
-				test: /\.css$/,
-				use: ['style-loader', 'css-loader'],
-			},
-			{
-				test: /\.(?:ico|gif|png|jpg|jpeg)$/,
-				type: 'asset/resource',
-			},
-			{
-				test: /\.(woff(2)?|eot|ttf|otf|svg)$/,
-				type: 'asset/inline',
-			},
-		],
-	},
-	plugins: [
-		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, '..', './src/index.html'),
-		}),
-	],
+const commonConfig = require('./webpack.common.js');
+
+module.exports = (envVars) => {
+	const { env } = envVars;
+	const envConfig = require(`./webpack.${env}.js`);
+	const config = merge(commonConfig, envConfig);
+	return config;
 };
