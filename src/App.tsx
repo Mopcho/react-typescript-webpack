@@ -4,6 +4,7 @@ import SVG from './logo.svg';
 import { ClickCounter } from './ClickCounter';
 
 export const App = () => {
+    const name = 10;
     return (
         <>
             <div className='container'>
