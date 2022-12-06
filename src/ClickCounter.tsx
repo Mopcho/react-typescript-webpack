@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 export const ClickCounter = () => {
-    const [clicks, setClicks] = useState(0);
+    const [clicks, setClicks] = useState(0)
 
     function onClickHandler() {
-        setClicks(old => old + 1);
+        setClicks((old) => old + 1)
     }
+
+    const name = 'asdasd'
 
     return (
         <div className="click-container">
