@@ -4,7 +4,7 @@ export const ClickCounter = () => {
     const [clicks, setClicks] = useState(0);
 
     function onClickHandler() {
-        setClicks(old => clicks + 1);
+        setClicks(old => old + 1);
     }
 
     return (
