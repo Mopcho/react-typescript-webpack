@@ -7,8 +7,6 @@ export const ClickCounter = () => {
         setClicks((old) => old + 1)
     }
 
-    const name = 'asdasd'
-
     return (
         <div className="click-container">
             <p>Clicked : {clicks}</p>

@@ -3,7 +3,6 @@ import IMAGE from './bugpng.png'
 import { ClickCounter } from './ClickCounter'
 
 export const App = () => {
-    let asdas = 'asdasd'
     return (
         <>
             <div className="container">
